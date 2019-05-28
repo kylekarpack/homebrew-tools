@@ -33,7 +33,8 @@ export class App extends React.Component {
 						</Grid.Column>
 						<Grid.Column width={13}>
 							<HomebrewUploader onRecipeSelected={this.handleRecipe}></HomebrewUploader>
-							<HomebrewTable recipe={this.state.recipe}></HomebrewTable>
+							<HomebrewTable data={this.state.recipe ? this.state.recipe.fermentables.fermentable : []}></HomebrewTable>
+							
 						</Grid.Column>
 					</Grid.Row>
 

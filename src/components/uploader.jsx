@@ -42,7 +42,7 @@ export default class HomebrewUploader extends Component {
 		// Create the return object
 		var obj = {};
 	
-		if (xml.nodeType == 1) { // element
+		if (xml.nodeType === 1) { // element
 			// do attributes
 			if (xml.attributes.length > 0) {
 			obj["@attributes"] = {};
