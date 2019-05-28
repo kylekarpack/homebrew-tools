@@ -1,49 +1,40 @@
 import React, { Component } from "react";
 import { Button, Form } from "semantic-ui-react";
+import _ from 'lodash'
 
 export default class HomebrewUploader extends Component {
+	
 	constructor(props) {
 		super(props);
 		this.state = {
-			file: null,
 			model: null
 		};
 	}
 
 	fileInputRef = React.createRef();
 
-	onFormSubmit = e => {
-		e.preventDefault(); // Stop form submit
-		// this.fileUpload(this.state.file).then(response => {
-		// 	console.log(response.data);
-		// });
-	};
 
 	fileChange = e => {
-		this.setState({ file: e.target.files[0] }, () => {
-			console.log(this.state.file);
-		});
 
 		const reader = new FileReader();
 		reader.onload = (e) => {
-			console.log(e);
-			const parser = new DOMParser(),
+			let parser = new DOMParser(),
 				xmlDoc = parser.parseFromString(e.target.result, "text/xml"),
 				json = this.xmlToJson(xmlDoc);
 
-			this.setState({ model: json	}, () => {
+			if (json && json.recipes && json.recipes.recipe) {
+				json = json.recipes.recipe;
+			}
+
+			this.setState({ model: json }, () => {
 				console.log(this.state);
+				this.props.onRecipeSelected(this.state.model);
 			});
 		};	
 		reader.onerror = (e) => {
 			console.error(e);
 		}	
 		reader.readAsText(e.target.files[0], "UTF-8");
-	};
-
-	// Export Schedules Tab 2
-	fileExport = file => {
-		// handle save for export button function
 	};
 
 	xmlToJson(xml) {
@@ -57,10 +48,10 @@ export default class HomebrewUploader extends Component {
 			obj["@attributes"] = {};
 				for (var j = 0; j < xml.attributes.length; j++) {
 					var attribute = xml.attributes.item(j);
-					obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+					obj["@attributes"][_.camelCase(attribute.nodeName)] = attribute.nodeValue;
 				}
 			}
-		} else if (xml.nodeType == 3) { // text
+		} else if (xml.nodeType === 3) { // text
 			obj = xml.nodeValue;
 		}
 	
@@ -68,11 +59,11 @@ export default class HomebrewUploader extends Component {
 		if (xml.hasChildNodes()) {
 			for(var i = 0; i < xml.childNodes.length; i++) {
 				var item = xml.childNodes.item(i);
-				var nodeName = item.nodeName;
-				if (typeof(obj[nodeName]) == "undefined") {
+				var nodeName = _.camelCase(item.nodeName);
+				if (typeof(obj[nodeName]) === "undefined") {
 					obj[nodeName] = this.xmlToJson(item);
 				} else {
-					if (typeof(obj[nodeName].push) == "undefined") {
+					if (typeof(obj[nodeName].push) === "undefined") {
 						var old = obj[nodeName];
 						obj[nodeName] = [];
 						obj[nodeName].push(old);
@@ -85,7 +76,6 @@ export default class HomebrewUploader extends Component {
 	};
 
 	render() {
-		const { file } = this.state;
 		return (
 			<Form onSubmit={this.onFormSubmit}>
 				<Form.Field>
@@ -104,10 +94,7 @@ export default class HomebrewUploader extends Component {
 					/>
 				</Form.Field>
 
-				<div>{JSON.stringify(this.state.model)}</div>
-
 			</Form>
-
 		);
 	}
 }
