@@ -1,15 +1,21 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Table, Header } from 'semantic-ui-react'
+import { Table, Header, Input, Pagination } from 'semantic-ui-react'
 import fermentables from "../data/fermentables";
 import GrainColor from "./grain/grain-color";
+import { tsImportEqualsDeclaration } from '@babel/types';
 
 export default class HomebrewTable extends Component {
 	state = {
 		column: null,
 		data: fermentables,
 		direction: null,
-		recipe: null
+		recipe: null,
+		page: {
+			size: 10,
+			activePage: 1,
+			total: fermentables.length
+		}
 	}
 
 	handleSort = clickedColumn => () => {
@@ -27,15 +33,45 @@ export default class HomebrewTable extends Component {
 
 		this.setState({
 			data: data.reverse(),
-			direction: direction === 'ascending' ? 'descending' : 'ascending',
+			direction: direction === 'ascending' ? 'descending' : 'ascending'
 		})
+	}
+
+	handleSearch = (e) => {
+		this.setState({
+			data: fermentables.filter(el => {
+				for (let key in el) {
+					if (typeof el[key] === "string") {
+						return el[key].toLowerCase().includes(e.target.value.toLowerCase());
+					}
+				}
+			})
+		})
+	}
+
+	handlePaginationChange = (e, { activePage }) => {
+		this.setState({
+			page: {
+				...this.state.page,
+				activePage: activePage
+			}
+		});
+		console.warn(this.state.page);
 	}
 
 	render() {
 		const { column, data, direction } = this.state
 
 		return (
-			<Table sortable celled>
+			<>
+			<br />
+			<div className="ui icon input">
+				<input type="text" onKeyUp={this.handleSearch} placeholder="Search..." /><i
+					aria-hidden="true"
+					className="search icon"
+				></i>
+			</div>
+			<Table sortable striped>
 				<Table.Header>
 					<Table.Row>
 						<Table.HeaderCell
@@ -59,7 +95,7 @@ export default class HomebrewTable extends Component {
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					{_.map(this.state.data, (row, i) => (
+					{_.map(this.state.data.slice((this.state.page.activePage - 1) * this.state.page.size, ((this.state.page.activePage - 1) * this.state.page.size) + this.state.page.size), (row, i) => (
 						<Table.Row key={i}>
 							<Table.Cell>
 								<Header as='h4'>
@@ -79,6 +115,15 @@ export default class HomebrewTable extends Component {
 					))}
 				</Table.Body>
 			</Table>
+			<Pagination
+				activePage={this.state.page.activePage}
+				boundaryRange={1}
+				onPageChange={this.handlePaginationChange}
+				siblingRange={1}
+				totalPages={Math.ceil(this.state.page.total / this.state.page.size)}
+				size="mini"
+				/>
+			</>
 		)
 	}
 }
