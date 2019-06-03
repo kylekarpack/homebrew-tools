@@ -38,14 +38,23 @@ export default class HomebrewTable extends Component {
 	}
 
 	handleSearch = (e) => {
-		this.setState({
-			data: fermentables.filter(el => {
-				for (let key in el) {
-					if (typeof el[key] === "string") {
-						return el[key].toLowerCase().includes(e.target.value.toLowerCase());
+		const newData = fermentables.filter(el => {
+			for (let key in el) {
+				if (typeof el[key] === "string") {
+					if (el[key].toLowerCase().includes(e.target.value.toLowerCase())) {
+						return true;
 					}
 				}
-			})
+			}
+			return false;
+		});
+
+		this.setState({
+			data: newData,
+			page: {
+				...this.state.page,
+				total: newData.length
+			}
 		})
 	}
 
@@ -106,11 +115,16 @@ export default class HomebrewTable extends Component {
 								</Header>
 							</Table.Cell>
 							<Table.Cell>
-								<GrainColor color={row.color}></GrainColor>
-								{row.color}
-
+								<Header as='h4' image>
+									<GrainColor color={row.color}></GrainColor>
+									<Header.Content>
+										&nbsp; {row.color}
+									</Header.Content>
+								</Header>
 							</Table.Cell>
-							<Table.Cell>{}</Table.Cell>
+							<Table.Cell>
+								{row.notes}
+							</Table.Cell>
 						</Table.Row>
 					))}
 				</Table.Body>

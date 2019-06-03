@@ -58,6 +58,7 @@ class GrainColor extends Component {
 		return {
 			height: "20px",
 			width: "20px",
+			display: "inline-block",
 			background: this.srmToHex(this.props.color)
 		}
 	}
@@ -77,7 +78,7 @@ class GrainColor extends Component {
 
 	render() {
 		return (
-			<div style={this.getStyle()}></div>
+			<span style={this.getStyle()}></span>
 		)
 	}
 
