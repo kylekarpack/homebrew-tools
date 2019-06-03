@@ -1,11 +1,13 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Header } from 'semantic-ui-react'
+import fermentables from "../data/fermentables";
+import GrainColor from "./grain/grain-color";
 
 export default class HomebrewTable extends Component {
 	state = {
 		column: null,
-		data: this.props.data,
+		data: fermentables,
 		direction: null,
 		recipe: null
 	}
@@ -33,23 +35,23 @@ export default class HomebrewTable extends Component {
 		const { column, data, direction } = this.state
 
 		return (
-			<Table sortable celled fixed>
+			<Table sortable celled>
 				<Table.Header>
 					<Table.Row>
 						<Table.HeaderCell
-							sorted={column === 'name' ? direction : null}
-							onClick={this.handleSort('name')}
+							sorted={column === 'grain' ? direction : null}
+							onClick={this.handleSort('grain')}
 						>
 							Name
             			</Table.HeaderCell>
 						<Table.HeaderCell
-							sorted={column === 'age' ? direction : null}
-							onClick={this.handleSort('age')}
+							sorted={column === 'color' ? direction : null}
+							onClick={this.handleSort('color')}
 						>
-							Amount
+							Color
             			</Table.HeaderCell>
 						<Table.HeaderCell
-							sorted={column === 'gender' ? direction : null}
+							sorted={column === 'color' ? direction : null}
 							onClick={this.handleSort('gender')}
 						>
 							Origin
@@ -57,11 +59,22 @@ export default class HomebrewTable extends Component {
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					{_.map(this.props.data, ({ name, amount, origin }) => (
-						<Table.Row key={name.text}>
-							<Table.Cell>{name.text}</Table.Cell>
-							<Table.Cell>{amount.text}</Table.Cell>
-							<Table.Cell>{origin.text}</Table.Cell>
+					{_.map(this.state.data, (row, i) => (
+						<Table.Row key={i}>
+							<Table.Cell>
+								<Header as='h4'>
+									<Header.Content>
+										{row.grain}
+										<Header.Subheader>{row.origin}</Header.Subheader>
+									</Header.Content>
+								</Header>
+							</Table.Cell>
+							<Table.Cell>
+								<GrainColor color={row.color}></GrainColor>
+								{row.color}
+
+							</Table.Cell>
+							<Table.Cell>{}</Table.Cell>
 						</Table.Row>
 					))}
 				</Table.Body>
