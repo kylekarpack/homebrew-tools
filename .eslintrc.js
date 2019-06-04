@@ -8,6 +8,7 @@ module.exports = {
 		"Atomics": "readonly",
 		"SharedArrayBuffer": "readonly"
 	},
+	"parser": "babel-eslint",
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -23,10 +24,6 @@ module.exports = {
 			"error",
 			"tab"
 		],
-		"linebreak-style": [
-			"error",
-			"unix"
-		],
 		"quotes": [
 			"error",
 			"double"
@@ -35,6 +32,7 @@ module.exports = {
 			"error",
 			"always"
 		],
-		"babel/no-invalid-this": 0
+		"babel/no-invalid-this": 0,
+		"react/jsx-uses-vars": 1
 	}
 };
