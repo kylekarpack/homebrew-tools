@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { Statistic } from "semantic-ui-react";
 
 class Stats extends Component {

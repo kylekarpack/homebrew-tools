@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Input, Label, Menu } from "semantic-ui-react";
 import { fermentables, yeast, hops } from "../data";

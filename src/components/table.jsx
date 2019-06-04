@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { Header, Pagination, Table } from "semantic-ui-react";
 import fermentables from "../data/fermentables";
 import GrainColor from "./grain/grain-color";

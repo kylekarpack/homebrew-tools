@@ -33,6 +33,8 @@ module.exports = {
 			"always"
 		],
 		"babel/no-invalid-this": 0,
-		"react/jsx-uses-vars": 1
+		"react/jsx-uses-vars": 1,
+		"react/jsx-uses-react": 1,
+		"react/react-in-jsx-scope": 1
 	}
 };
