@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { Table, Header, Input, Pagination } from 'semantic-ui-react'
 import fermentables from "../data/fermentables";
 import GrainColor from "./grain/grain-color";
-import { tsImportEqualsDeclaration } from '@babel/types';
 
 export default class HomebrewTable extends Component {
 	state = {
@@ -65,7 +64,6 @@ export default class HomebrewTable extends Component {
 				activePage: activePage
 			}
 		});
-		console.warn(this.state.page);
 	}
 
 	render() {
