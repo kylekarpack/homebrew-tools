@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomebrewMenu from "./components/menu";
 import HomebrewTable from "./components/table";
 import HomebrewUploader from "./components/uploader";
+import Recipe from './components/recipe';
 
 
 export class App extends React.Component {
@@ -34,7 +35,7 @@ export class App extends React.Component {
 								<HomebrewMenu></HomebrewMenu>
 							</Grid.Column>
 							<Grid.Column width={13}>
-								<Route path="/recipes" component={HomebrewUploader}></Route>
+								<Route path="/recipe" component={Recipe}></Route>
 								<Route path="/fermentables" component={HomebrewTable}></Route>
 								{/* <HomebrewUploader onRecipeSelected={this.handleRecipe}></HomebrewUploader>
 								<HomebrewTable data={this.state.recipe ? this.state.recipe.fermentables.fermentable : []}></HomebrewTable> */}

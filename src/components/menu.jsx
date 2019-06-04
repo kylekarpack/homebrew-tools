@@ -13,7 +13,7 @@ export default class HomebrewMenu extends Component {
 
 		return (
 			<Menu size='large' vertical style={{ position:"sticky", top: 0 }}>
-				<Menu.Item as={NavLink} to="/recipes">
+				<Menu.Item as={NavLink} to="/recipe">
 					<Label color='teal'>1</Label>
 					Recipes
         		</Menu.Item>
