@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import { Component } from "react";
 
 class GrainColor extends Component {
 
-	srmToHex(srm) {
-		// Returns an RGB value based on SRM
-		var r = 0, g = 0, b = 0;
+	// Returns an RGB value based on SRM
+	srmToHex(srm) {	
+		let r = 0, g = 0, b = 0;
 
 		if (srm >= 0 && srm <= 1) {
 			r = 240;
@@ -48,10 +48,27 @@ class GrainColor extends Component {
 				b = 17;
 			}
 		}
-		var red = this.doubleToHex(r);
-		var green = this.doubleToHex(g);
-		var blue = this.doubleToHex(b);
-		return "#" + red + green + blue;
+		const red = this.doubleToHex(r),
+			green = this.doubleToHex(g),
+			blue = this.doubleToHex(b);
+
+		return `#${red}${green}${blue}`;
+	}
+
+	// Converts decimal in string to hex in string 
+	doubleToHex(d) {
+		let hexText = d.toString(16),
+			point = hexText.indexOf(".");
+
+		if (point !== -1) {
+			hexText = hexText.substring(0, point);
+		}
+
+		while (hexText.length < 2) {
+			hexText = "0" + hexText;
+		}
+
+		return hexText;
 	}
 
 	getStyle() {
@@ -60,26 +77,13 @@ class GrainColor extends Component {
 			width: "20px",
 			display: "inline-block",
 			background: this.srmToHex(this.props.color)
-		}
-	}
-
-	doubleToHex(d) {
-		// Converts decimal in string to hex in string 
-		var hexText = d.toString(16);
-		var point = hexText.indexOf(".");
-		if (point !== -1) {
-			hexText = hexText.substring(0, point);
-		}
-		while (hexText.length < 2) {
-			hexText = "0" + hexText;
-		}
-		return hexText;
+		};
 	}
 
 	render() {
 		return (
 			<span style={this.getStyle()}></span>
-		)
+		);
 	}
 
 }

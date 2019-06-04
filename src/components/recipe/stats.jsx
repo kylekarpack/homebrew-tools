@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Statistic } from "semantic-ui-react";
 
 class Stats extends Component {
@@ -30,7 +30,7 @@ class Stats extends Component {
 				</Statistic>
 
 			</Statistic.Group>
-		)
+		);
 	}
 }
 

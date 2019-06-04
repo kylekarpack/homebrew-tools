@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form } from "semantic-ui-react";
-import _ from 'lodash'
+import _ from "lodash";
 
 export default class HomebrewUploader extends Component {
 	
@@ -33,7 +33,7 @@ export default class HomebrewUploader extends Component {
 		};	
 		reader.onerror = (e) => {
 			console.error(e);
-		}	
+		};	
 		reader.readAsText(e.target.files[0], "UTF-8");
 	};
 
@@ -45,7 +45,7 @@ export default class HomebrewUploader extends Component {
 		if (xml.nodeType === 1) { // element
 			// do attributes
 			if (xml.attributes.length > 0) {
-			obj["@attributes"] = {};
+				obj["@attributes"] = {};
 				for (var j = 0; j < xml.attributes.length; j++) {
 					var attribute = xml.attributes.item(j);
 					obj["@attributes"][_.camelCase(attribute.nodeName)] = attribute.nodeValue;
@@ -73,7 +73,7 @@ export default class HomebrewUploader extends Component {
 			}
 		}
 		return obj;
-	};
+	}
 
 	render() {
 		return (
