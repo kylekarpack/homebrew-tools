@@ -1,6 +1,5 @@
-import _ from 'lodash'
-import React, { Component } from 'react'
-import { Table, Header, Input, Pagination } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Header, Pagination, Table } from 'semantic-ui-react';
 import fermentables from "../data/fermentables";
 import GrainColor from "./grain/grain-color";
 
@@ -23,7 +22,7 @@ export default class HomebrewTable extends Component {
 		if (column !== clickedColumn) {
 			this.setState({
 				column: clickedColumn,
-				data: _.sortBy(data, [clickedColumn]),
+				data: data.sort((a,b) => a[clickedColumn] - b[clickedColumn]),
 				direction: 'ascending',
 			})
 
@@ -102,7 +101,7 @@ export default class HomebrewTable extends Component {
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					{_.map(this.state.data.slice((this.state.page.activePage - 1) * this.state.page.size, ((this.state.page.activePage - 1) * this.state.page.size) + this.state.page.size), (row, i) => (
+					{this.state.data.slice((this.state.page.activePage - 1) * this.state.page.size, ((this.state.page.activePage - 1) * this.state.page.size) + this.state.page.size).map((row, i) => (
 						<Table.Row key={i}>
 							<Table.Cell>
 								<Header as='h4'>
