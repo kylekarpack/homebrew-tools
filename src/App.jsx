@@ -7,6 +7,7 @@ import "./App.css";
 import HomebrewMenu from "./components/menu";
 import Recipe from "./components/recipe";
 import { Fermentables } from "./pages/Fermentables";
+import { Hops } from "./pages/Hops";
 import { Yeasts } from "./pages/Yeasts";
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
 						<Route path="/recipe" component={Recipe} />
 						<Route path="/fermentables" component={Fermentables} />
 						<Route path="/yeasts" component={Yeasts} />
+						<Route path="/hops" component={Hops} />
 						{/* <HomebrewUploader onRecipeSelected={handleRecipe}></HomebrewUploader>
 							<HomebrewTable data={this.state.recipe ? this.state.recipe.fermentables.fermentable : []}></HomebrewTable> */}
 					</div>
