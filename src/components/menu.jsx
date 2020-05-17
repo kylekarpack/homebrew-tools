@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { fermentables, hops, yeast } from "../data";
 
 export default function HomebrewMenu() {
@@ -10,31 +10,31 @@ export default function HomebrewMenu() {
 			<p className="menu-label">Your Brewing</p>
 			<ul className="menu-list">
 				<li>
-					<Link to="/recipe">
-						Recipes
+					<NavLink to="/recipe" activeClassName="is-active">
+						Recipes&nbsp;
 						<span className="tag">1</span>
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 			<p className="menu-label">Ingredients</p>
 			<ul className="menu-list">
 				<li>
-					<Link to="/fermentables">
-						Fermentables
+					<NavLink to="/fermentables" activeClassName="is-active">
+						Fermentables&nbsp;
 						<span className="tag">{fermentables.length}</span>
-					</Link>
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/yeasts">
-						Yeasts
+					<NavLink to="/yeasts" activeClassName="is-active">
+						Yeasts&nbsp;
 						<span className="tag">{yeast.length}</span>
-					</Link>
+					</NavLink>
 				</li>
 				<li>
-					<Link to="hops">
-						Hops
+					<NavLink to="hops" activeClassName="is-active">
+						Hops&nbsp;
 						<span className="tag">{hops.length}</span>
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 		</aside>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFilters, useSortBy, useTable, usePagination } from "react-table";
 
-export default function Table({ columns, data }) {
+export default function Table({ columns, data, filterColumn }) {
 	const [filterInput, setFilterInput] = useState("");
 
 	const {
@@ -26,11 +26,17 @@ export default function Table({ columns, data }) {
 		usePagination
 	);
 
-	const paginationMiddle = [pageIndex - 1, pageIndex, pageIndex + 1];
+	let start = pageIndex;
+	if (pageIndex <= 1) {
+		start = 2;
+	} else if (pageIndex >= pageCount - 2) {
+		start = pageCount - 3;
+	}
+	const paginationMiddle = [start - 1, start, start + 1];
 
 	const handleFilterChange = (e) => {
 		const value = e.target.value || undefined;
-		setFilter("grain", value);
+		setFilter(filterColumn, value);
 		setFilterInput(value);
 	};
 
@@ -88,52 +94,60 @@ export default function Table({ columns, data }) {
 				</tbody>
 			</table>
 			<nav className="pagination" role="navigation" aria-label="pagination">
-				<a
-					className="pagination-previous"
-					onClick={() => previousPage()}
-					disabled={!canPreviousPage}>
-					Previous
-				</a>
 				<ul className="pagination-list">
 					<li>
 						<a
 							onClick={() => gotoPage(0)}
-							className="pagination-link"
+							className={`pagination-link ${
+								pageIndex === 0 ? "is-current" : ""
+							}`}
 							aria-label="Goto page 1">
 							1
 						</a>
 					</li>
-					<li>
-						<span className="pagination-ellipsis">&hellip;</span>
-					</li>
+					{start > 2 ? (
+						<li>
+							<span className="pagination-ellipsis">&hellip;</span>
+						</li>
+					) : null}
 					{paginationMiddle.map((i) => {
 						return (
-							<li>
+							<li key={i}>
 								<a
 									onClick={() => gotoPage(i)}
 									className={`pagination-link ${
-										i === pageIndex ? "is-current" : ""
+										pageIndex === i ? "is-current" : ""
 									}`}
 									aria-label={`Page ${i + 1}`}
-									aria-current={`${i === pageIndex ? "page" : ""}`}>
+									aria-current={`${pageIndex === i ? "page" : ""}`}>
 									{i + 1}
 								</a>
 							</li>
 						);
 					})}
 
-					<li>
-						<span className="pagination-ellipsis">&hellip;</span>
-					</li>
+					{start < pageCount - 3 ? (
+						<li>
+							<span className="pagination-ellipsis">&hellip;</span>
+						</li>
+					) : null}
 					<li>
 						<a
 							onClick={() => gotoPage(pageCount - 1)}
-							className="pagination-link"
+							className={`pagination-link ${
+								pageIndex === pageCount - 1 ? "is-current" : ""
+							}`}
 							aria-label="Goto last page">
 							{pageCount}
 						</a>
 					</li>
 				</ul>
+				<a
+					className="pagination-previous"
+					onClick={() => previousPage()}
+					disabled={!canPreviousPage}>
+					Previous
+				</a>
 				<a
 					className="pagination-next"
 					onClick={() => nextPage()}
