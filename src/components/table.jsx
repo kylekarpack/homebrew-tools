@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFilters, useSortBy, useTable } from "react-table";
+import { useFilters, useSortBy, useTable, usePagination } from "react-table";
 
 export default function Table({ columns, data }) {
 	const [filterInput, setFilterInput] = useState("");
@@ -8,10 +8,25 @@ export default function Table({ columns, data }) {
 		getTableProps,
 		getTableBodyProps,
 		headerGroups,
-		rows,
 		prepareRow,
 		setFilter,
-	} = useTable({ columns, data }, useFilters, useSortBy);
+		page,
+		canPreviousPage,
+		canNextPage,
+		pageCount,
+		gotoPage,
+		nextPage,
+		previousPage,
+		setPageSize,
+		state: { pageIndex, pageSize },
+	} = useTable(
+		{ columns, data, initialState: { pageIndex: 0 } },
+		useFilters,
+		useSortBy,
+		usePagination
+	);
+
+	const paginationMiddle = [pageIndex - 1, pageIndex, pageIndex + 1];
 
 	const handleFilterChange = (e) => {
 		const value = e.target.value || undefined;
@@ -40,23 +55,25 @@ export default function Table({ columns, data }) {
 					{headerGroups.map((headerGroup) => (
 						<tr {...headerGroup.getHeaderGroupProps()}>
 							{headerGroup.headers.map((column) => (
-								<th
-									{...column.getHeaderProps(column.getSortByToggleProps())}
-									className={
-										column.isSorted
-											? column.isSortedDesc
-												? "sort-desc"
-												: "sort-asc"
-											: ""
-									}>
+								<th {...column.getHeaderProps(column.getSortByToggleProps())}>
 									{column.render("Header")}
+									<span className="icon">
+										<i
+											className={`fas ${
+												column.isSorted
+													? column.isSortedDesc
+														? "fa-sort-down"
+														: "fa-sort-up"
+													: "fa-sort"
+											}`}></i>
+									</span>
 								</th>
 							))}
 						</tr>
 					))}
 				</thead>
 				<tbody {...getTableBodyProps()}>
-					{rows.map((row, i) => {
+					{page.map((row) => {
 						prepareRow(row);
 						return (
 							<tr {...row.getRowProps()}>
@@ -70,6 +87,72 @@ export default function Table({ columns, data }) {
 					})}
 				</tbody>
 			</table>
+			<nav className="pagination" role="navigation" aria-label="pagination">
+				<a
+					className="pagination-previous"
+					onClick={() => previousPage()}
+					disabled={!canPreviousPage}>
+					Previous
+				</a>
+				<ul className="pagination-list">
+					<li>
+						<a
+							onClick={() => gotoPage(0)}
+							className="pagination-link"
+							aria-label="Goto page 1">
+							1
+						</a>
+					</li>
+					<li>
+						<span className="pagination-ellipsis">&hellip;</span>
+					</li>
+					{paginationMiddle.map((i) => {
+						return (
+							<li>
+								<a
+									onClick={() => gotoPage(i)}
+									className={`pagination-link ${
+										i === pageIndex ? "is-current" : ""
+									}`}
+									aria-label={`Page ${i + 1}`}
+									aria-current={`${i === pageIndex ? "page" : ""}`}>
+									{i + 1}
+								</a>
+							</li>
+						);
+					})}
+
+					<li>
+						<span className="pagination-ellipsis">&hellip;</span>
+					</li>
+					<li>
+						<a
+							onClick={() => gotoPage(pageCount - 1)}
+							className="pagination-link"
+							aria-label="Goto last page">
+							{pageCount}
+						</a>
+					</li>
+				</ul>
+				<a
+					className="pagination-next"
+					onClick={() => nextPage()}
+					disabled={!canNextPage}>
+					Next page
+				</a>
+				<select
+					className="pagination-next"
+					value={pageSize}
+					onChange={(e) => {
+						setPageSize(Number(e.target.value));
+					}}>
+					{[10, 25, 50, 100].map((pageSize) => (
+						<option key={pageSize} value={pageSize}>
+							Show {pageSize}
+						</option>
+					))}
+				</select>
+			</nav>
 		</>
 	);
 }
