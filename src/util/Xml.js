@@ -27,17 +27,36 @@ export default class Xml {
 				var item = xml.childNodes.item(i);
 				var nodeName = camelCase(item.nodeName);
 				if (typeof obj[nodeName] === "undefined") {
-					obj[nodeName] = this.xmlToJson(item);
+					obj[nodeName] = Xml.xmlToJson(item);
 				} else {
 					if (typeof obj[nodeName].push === "undefined") {
 						var old = obj[nodeName];
 						obj[nodeName] = [];
 						obj[nodeName].push(old);
 					}
-					obj[nodeName].push(this.xmlToJson(item));
+					obj[nodeName].push(Xml.xmlToJson(item));
 				}
 			}
 		}
+
+		// Move up all text attrs
+		for (let key in obj) {
+			if (typeof obj[key].text === "string") {
+				obj[key] = obj[key].text;
+			} else {
+				delete obj[key].text;
+			}
+		}
+
+		// Move up all sub-arrays
+		for (let key in obj) {
+			const value = obj[key];
+			const keys = Object.keys(value);
+			if (typeof value === "object" && keys.length === 1 && Array.isArray(value[keys[0]])) {
+				obj[key] = value[keys[0]];
+			}
+		}
+
 		return obj;
 	};
 }

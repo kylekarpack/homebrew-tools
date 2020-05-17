@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFilters, useSortBy, useTable, usePagination } from "react-table";
 
-export default function Table({ columns, data, filterColumn }) {
+export default function Table({ columns, data, options }) {
 	const [filterInput, setFilterInput] = useState("");
 
 	const {
@@ -36,24 +36,26 @@ export default function Table({ columns, data, filterColumn }) {
 
 	const handleFilterChange = (e) => {
 		const value = e.target.value || undefined;
-		setFilter(filterColumn, value);
+		setFilter(options?.filterColumn, value);
 		setFilterInput(value);
 	};
 
 	return (
 		<>
 			<br />
-			<p className="control has-icons-left">
-				<input
-					className="input"
-					placeholder="Search"
-					value={filterInput}
-					onChange={handleFilterChange}
-				/>
-				<span className="icon is-small is-left">
-					<i className="fas fa-search"></i>
-				</span>
-			</p>
+			{options.filter ? (
+				<p className="control has-icons-left">
+					<input
+						className="input"
+						placeholder="Search"
+						value={filterInput}
+						onChange={handleFilterChange}
+					/>
+					<span className="icon is-small is-left">
+						<i className="fas fa-search"></i>
+					</span>
+				</p>
+			) : null}
 			<table
 				{...getTableProps()}
 				className="table is-bordered is-striped is-fullwidth">
@@ -93,84 +95,86 @@ export default function Table({ columns, data, filterColumn }) {
 					})}
 				</tbody>
 			</table>
-			<nav className="pagination" role="navigation" aria-label="pagination">
-				<ul className="pagination-list">
-					<li>
-						<button
-							type="button"
-							onClick={() => gotoPage(0)}
-							className={`pagination-link ${
-								pageIndex === 0 ? "is-current" : ""
-							}`}
-							aria-label="Goto page 1">
-							1
-						</button>
-					</li>
-					{start > 2 ? (
+			{options.pagination ? (
+				<nav className="pagination" role="navigation" aria-label="pagination">
+					<ul className="pagination-list">
 						<li>
-							<span className="pagination-ellipsis">&hellip;</span>
+							<button
+								type="button"
+								onClick={() => gotoPage(0)}
+								className={`pagination-link ${
+									pageIndex === 0 ? "is-current" : ""
+								}`}
+								aria-label="Goto page 1">
+								1
+							</button>
 						</li>
-					) : null}
-					{paginationMiddle.map((i) => {
-						return (
-							<li key={i}>
-								<button
-									type="button"
-									onClick={() => gotoPage(i)}
-									className={`pagination-link ${
-										pageIndex === i ? "is-current" : ""
-									}`}
-									aria-label={`Page ${i + 1}`}>
-									{i + 1}
-								</button>
+						{start > 2 ? (
+							<li>
+								<span className="pagination-ellipsis">&hellip;</span>
 							</li>
-						);
-					})}
+						) : null}
+						{paginationMiddle.map((i) => {
+							return (
+								<li key={i}>
+									<button
+										type="button"
+										onClick={() => gotoPage(i)}
+										className={`pagination-link ${
+											pageIndex === i ? "is-current" : ""
+										}`}
+										aria-label={`Page ${i + 1}`}>
+										{i + 1}
+									</button>
+								</li>
+							);
+						})}
 
-					{start < pageCount - 3 ? (
+						{start < pageCount - 3 ? (
+							<li>
+								<span className="pagination-ellipsis">&hellip;</span>
+							</li>
+						) : null}
 						<li>
-							<span className="pagination-ellipsis">&hellip;</span>
+							<button
+								type="button"
+								onClick={() => gotoPage(pageCount - 1)}
+								className={`pagination-link ${
+									pageIndex === pageCount - 1 ? "is-current" : ""
+								}`}
+								aria-label="Goto last page">
+								{pageCount}
+							</button>
 						</li>
-					) : null}
-					<li>
-						<button
-							type="button"
-							onClick={() => gotoPage(pageCount - 1)}
-							className={`pagination-link ${
-								pageIndex === pageCount - 1 ? "is-current" : ""
-							}`}
-							aria-label="Goto last page">
-							{pageCount}
-						</button>
-					</li>
-				</ul>
-				<button
-					type="button"
-					className="pagination-previous"
-					onClick={() => previousPage()}
-					disabled={!canPreviousPage}>
-					Previous
-				</button>
-				<button
-					type="button"
-					className="pagination-next"
-					onClick={() => nextPage()}
-					disabled={!canNextPage}>
-					Next page
-				</button>
-				<select
-					className="pagination-next"
-					value={pageSize}
-					onChange={(e) => {
-						setPageSize(Number(e.target.value));
-					}}>
-					{[10, 25, 50, 100].map((pageSize) => (
-						<option key={pageSize} value={pageSize}>
-							Show {pageSize}
-						</option>
-					))}
-				</select>
-			</nav>
+					</ul>
+					<button
+						type="button"
+						className="pagination-previous"
+						onClick={() => previousPage()}
+						disabled={!canPreviousPage}>
+						Previous
+					</button>
+					<button
+						type="button"
+						className="pagination-next"
+						onClick={() => nextPage()}
+						disabled={!canNextPage}>
+						Next page
+					</button>
+					<select
+						className="pagination-next"
+						value={pageSize}
+						onChange={(e) => {
+							setPageSize(Number(e.target.value));
+						}}>
+						{[10, 25, 50, 100].map((pageSize) => (
+							<option key={pageSize} value={pageSize}>
+								Show {pageSize}
+							</option>
+						))}
+					</select>
+				</nav>
+			) : null}
 		</>
 	);
 }

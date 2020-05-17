@@ -3,30 +3,40 @@ import React from "react";
 export default function Stats({ recipe }) {
 	console.log(recipe);
 
+	if (!recipe) {
+		return "Upload a BeerXML file to start";
+	}
+
 	return (
-		<nav class="level">
-			<div class="level-item has-text-centered">
+		<nav className="level">
+			<div className="level-item has-text-centered">
 				<div>
-					<p class="heading">Tweets</p>
-					<p class="title">3,456</p>
+					<p className="heading">Original Gravity</p>
+					<p className="title">{recipe.og}</p>
 				</div>
 			</div>
-			<div class="level-item has-text-centered">
+			<div className="level-item has-text-centered">
 				<div>
-					<p class="heading">Following</p>
-					<p class="title">123</p>
+					<p className="heading">Final Gravity</p>
+					<p className="title">{recipe.fg}</p>
 				</div>
 			</div>
-			<div class="level-item has-text-centered">
+			<div className="level-item has-text-centered">
 				<div>
-					<p class="heading">Followers</p>
-					<p class="title">456K</p>
+					<p className="heading">ABV</p>
+					<p className="title">{recipe.estAbv}%</p>
 				</div>
 			</div>
-			<div class="level-item has-text-centered">
+			<div className="level-item has-text-centered">
 				<div>
-					<p class="heading">Likes</p>
-					<p class="title">789</p>
+					<p className="heading">IBU</p>
+					<p className="title">{recipe.ibu}</p>
+				</div>
+			</div>
+			<div className="level-item has-text-centered">
+				<div>
+					<p className="heading">SRM</p>
+					<p className="title">{recipe.estColor}</p>
 				</div>
 			</div>
 		</nav>
