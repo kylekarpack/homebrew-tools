@@ -4,7 +4,10 @@ import { fermentables, hops, yeast } from "../data";
 
 export default function HomebrewMenu() {
 	return (
-		<aside className="menu">
+		<aside className="menu" style={{ position: "sticky", top: 0 }}>
+			<br />
+			<br />
+			<p className="menu-label">Your Brewing</p>
 			<ul className="menu-list">
 				<li>
 					<Link to="/recipe">
@@ -12,6 +15,9 @@ export default function HomebrewMenu() {
 						<span className="tag">1</span>
 					</Link>
 				</li>
+			</ul>
+			<p className="menu-label">Ingredients</p>
+			<ul className="menu-list">
 				<li>
 					<Link to="/fermentables">
 						Fermentables

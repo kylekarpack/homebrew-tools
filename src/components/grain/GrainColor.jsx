@@ -76,6 +76,7 @@ class GrainColor extends Component {
 			height: "20px",
 			width: "20px",
 			display: "inline-block",
+			verticalAlign: "middle",
 			background: this.srmToHex(this.props.color)
 		};
 	}
