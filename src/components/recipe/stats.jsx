@@ -1,37 +1,34 @@
-import React, { Component } from "react";
-import { Statistic } from "semantic-ui-react";
+import React from "react";
 
-class Stats extends Component {
+export default function Stats({ recipe }) {
+	console.log(recipe);
 
-	render() {
-		const position = { position: "sticky", top: 0 };
-
-		return (
-			<Statistic.Group widths="five" size="mini" style={position}>
-				<Statistic>
-					<Statistic.Value>1.077</Statistic.Value>
-					<Statistic.Label>OG</Statistic.Label>
-				</Statistic>
-				<Statistic>
-					<Statistic.Value>1.026</Statistic.Value>
-					<Statistic.Label>FG</Statistic.Label>
-				</Statistic>
-				<Statistic>
-					<Statistic.Value>6.7%</Statistic.Value>
-					<Statistic.Label>ABV</Statistic.Label>
-				</Statistic>
-				<Statistic>
-					<Statistic.Value>32</Statistic.Value>
-					<Statistic.Label>IBU</Statistic.Label>
-				</Statistic>
-				<Statistic>
-					<Statistic.Value>7</Statistic.Value>
-					<Statistic.Label>SRM</Statistic.Label>
-				</Statistic>
-
-			</Statistic.Group>
-		);
-	}
+	return (
+		<nav class="level">
+			<div class="level-item has-text-centered">
+				<div>
+					<p class="heading">Tweets</p>
+					<p class="title">3,456</p>
+				</div>
+			</div>
+			<div class="level-item has-text-centered">
+				<div>
+					<p class="heading">Following</p>
+					<p class="title">123</p>
+				</div>
+			</div>
+			<div class="level-item has-text-centered">
+				<div>
+					<p class="heading">Followers</p>
+					<p class="title">456K</p>
+				</div>
+			</div>
+			<div class="level-item has-text-centered">
+				<div>
+					<p class="heading">Likes</p>
+					<p class="title">789</p>
+				</div>
+			</div>
+		</nav>
+	);
 }
-
-export default Stats;

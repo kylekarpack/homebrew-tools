@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Xml } from "../util";
 
 export default function Uploader({ onLoad }) {
-	const [state, setState] = useState({});
 	const fileInputRef = React.createRef();
 
 	const fileChange = (e) => {
@@ -16,12 +15,13 @@ export default function Uploader({ onLoad }) {
 				json = json.recipes.recipe;
 			}
 
-			setState({ model: json });
 			onLoad(json);
 		};
+
 		reader.onerror = (e) => {
-			console.error(e);
+			throw e;
 		};
+
 		reader.readAsText(e.target.files[0], "UTF-8");
 	};
 

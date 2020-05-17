@@ -22,7 +22,7 @@ export function Yeasts() {
 				accessor: "temp",
 			},
 			{
-				Header: "Att",
+				Header: "ATt",
 				accessor: "attenuationPercent",
 			},
 			{

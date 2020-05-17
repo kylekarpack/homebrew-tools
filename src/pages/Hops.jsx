@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import Table from "../components/table";
+import Table from "../components/Table";
 import { hops } from "../data";
 
 export function Hops() {
