@@ -1,37 +1,36 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import { Input, Label, Menu } from "semantic-ui-react";
-import { fermentables, yeast, hops } from "../data";
+import React from "react";
+import { Link } from "react-router-dom";
+import { fermentables, hops, yeast } from "../data";
 
-export default class HomebrewMenu extends Component {
-
-	render() {
-		return (
-			<Menu size='large' vertical style={{ position: "sticky", top: 0 }}>
-				<Menu.Item as={NavLink} to="/recipe">
-					<Label color='teal'>1</Label>
-					Recipes
-				</Menu.Item>
-
-				<Menu.Item as={NavLink} to="/fermentables">
-					<Label>{fermentables.length}</Label>
-					Fermentables
-				</Menu.Item>
-
-				<Menu.Item as={NavLink} to="/yeasts">
-					<Label>{yeast.length}</Label>
-					Yeasts
-				</Menu.Item>
-
-				<Menu.Item as={NavLink} to="hops">
-					<Label>{hops.length}</Label>
-					Hops
-				</Menu.Item>
-
-				<Menu.Item>
-					<Input icon='search' placeholder='Search items...' />
-				</Menu.Item>
-			</Menu>
-		);
-	}
+export default function HomebrewMenu() {
+	return (
+		<aside className="menu">
+			<ul className="menu-list">
+				<li>
+					<Link to="/recipe">
+						Recipes
+						<span className="tag">1</span>
+					</Link>
+				</li>
+				<li>
+					<Link to="/fermentables">
+						Fermentables
+						<span className="tag">{fermentables.length}</span>
+					</Link>
+				</li>
+				<li>
+					<Link to="/yeasts">
+						Yeasts
+						<span className="tag">{yeast.length}</span>
+					</Link>
+				</li>
+				<li>
+					<Link to="hops">
+						Hops
+						<span className="tag">{hops.length}</span>
+					</Link>
+				</li>
+			</ul>
+		</aside>
+	);
 }
