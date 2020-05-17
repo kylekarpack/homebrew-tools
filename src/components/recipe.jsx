@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import HomebrewUploader from "./uploader";
+import React from "react";
 import Stats from "./recipe/stats";
+import Uploader from "./Uploader";
 
-class Recipe extends Component {
+export default function Recipe() {
+	const onLoad = (data) => {
+		console.log(data);
+	};
 
-	render() {
-		return (
-			<>
-				<HomebrewUploader></HomebrewUploader>
-				<Stats></Stats>
-			</>
-		);
-	}
+	return (
+		<div className="section">
+			<Uploader onLoad={onLoad} />
+			<Stats></Stats>
+		</div>
+	);
 }
-
-export default Recipe;

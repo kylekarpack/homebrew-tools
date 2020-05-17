@@ -96,14 +96,15 @@ export default function Table({ columns, data, filterColumn }) {
 			<nav className="pagination" role="navigation" aria-label="pagination">
 				<ul className="pagination-list">
 					<li>
-						<a
+						<button
+							type="button"
 							onClick={() => gotoPage(0)}
 							className={`pagination-link ${
 								pageIndex === 0 ? "is-current" : ""
 							}`}
 							aria-label="Goto page 1">
 							1
-						</a>
+						</button>
 					</li>
 					{start > 2 ? (
 						<li>
@@ -113,15 +114,15 @@ export default function Table({ columns, data, filterColumn }) {
 					{paginationMiddle.map((i) => {
 						return (
 							<li key={i}>
-								<a
+								<button
+									type="button"
 									onClick={() => gotoPage(i)}
 									className={`pagination-link ${
 										pageIndex === i ? "is-current" : ""
 									}`}
-									aria-label={`Page ${i + 1}`}
-									aria-current={`${pageIndex === i ? "page" : ""}`}>
+									aria-label={`Page ${i + 1}`}>
 									{i + 1}
-								</a>
+								</button>
 							</li>
 						);
 					})}
@@ -132,28 +133,31 @@ export default function Table({ columns, data, filterColumn }) {
 						</li>
 					) : null}
 					<li>
-						<a
+						<button
+							type="button"
 							onClick={() => gotoPage(pageCount - 1)}
 							className={`pagination-link ${
 								pageIndex === pageCount - 1 ? "is-current" : ""
 							}`}
 							aria-label="Goto last page">
 							{pageCount}
-						</a>
+						</button>
 					</li>
 				</ul>
-				<a
+				<button
+					type="button"
 					className="pagination-previous"
 					onClick={() => previousPage()}
 					disabled={!canPreviousPage}>
 					Previous
-				</a>
-				<a
+				</button>
+				<button
+					type="button"
 					className="pagination-next"
 					onClick={() => nextPage()}
 					disabled={!canNextPage}>
 					Next page
-				</a>
+				</button>
 				<select
 					className="pagination-next"
 					value={pageSize}
