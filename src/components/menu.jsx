@@ -31,7 +31,7 @@ export default function HomebrewMenu() {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="hops" activeClassName="is-active">
+					<NavLink to="/hops" activeClassName="is-active">
 						Hops&nbsp;
 						<span className="tag">{hops.length}</span>
 					</NavLink>
