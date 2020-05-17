@@ -2,7 +2,6 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "bulma/css/bulma.css";
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 import HomebrewMenu from "./components/Menu";
 import Recipe from "./components/Recipe";
