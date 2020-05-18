@@ -33,5 +33,12 @@ export function Yeasts() {
 		[]
 	);
 
-	return <Table columns={columns} data={yeasts} filterColumn="name" />;
+	return (
+		<Table
+			columns={columns}
+			data={yeasts}
+			pagination={true}
+			filterColumn="name"
+		/>
+	);
 }

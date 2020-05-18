@@ -7,9 +7,8 @@ export default function Uploader({ onLoad }) {
 	const fileChange = (e) => {
 		const reader = new FileReader();
 		reader.onload = (e) => {
-			let parser = new DOMParser(),
-				xmlDoc = parser.parseFromString(e.target.result, "text/xml"),
-				json = Xml.xmlToJson(xmlDoc);
+			const xmlDoc = Xml.parse(e.target.result);
+			let	json = Xml.xmlToJson(xmlDoc);
 
 			if (json && json.recipes && json.recipes.recipe) {
 				json = json.recipes.recipe;

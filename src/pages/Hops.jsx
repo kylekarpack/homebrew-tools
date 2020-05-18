@@ -24,10 +24,12 @@ export function Hops() {
 			{
 				Header: "B",
 				accessor: "beta",
-			}
+			},
 		],
 		[]
 	);
 
-	return <Table columns={columns} data={hops} filterColumn="hop" />;
+	return (
+		<Table columns={columns} data={hops} pagination={true} filterColumn="hop" />
+	);
 }

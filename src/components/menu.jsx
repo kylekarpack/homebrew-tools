@@ -1,8 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { fermentables, hops, yeast } from "../data";
+import { FileSystem } from "../util";
 
 export default function HomebrewMenu() {
+
+	const openFileSystem = () => {
+		FileSystem.open();
+	};
+
 	return (
 		<aside className="menu" style={{ position: "sticky", top: 0 }}>
 			<br />
@@ -10,7 +16,10 @@ export default function HomebrewMenu() {
 			<p className="menu-label">Your Brewing</p>
 			<ul className="menu-list">
 				<li>
-					<NavLink to="/recipe" activeClassName="is-active">
+					<a onClick={openFileSystem}>
+						Open Filesystem
+					</a>
+					<NavLink to="/recipes" activeClassName="is-active">
 						Recipes&nbsp;
 						<span className="tag">1</span>
 					</NavLink>

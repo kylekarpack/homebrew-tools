@@ -30,5 +30,12 @@ export function Fermentables() {
 		[]
 	);
 
-	return <Table columns={columns} data={fermentables} filterColumn="grain" />;
+	return (
+		<Table
+			columns={columns}
+			data={fermentables}
+			pagination={true}
+			filterColumn="grain"
+		/>
+	);
 }

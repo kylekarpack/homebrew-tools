@@ -1,6 +1,17 @@
 import { camelCase } from "lodash";
 
 export default class Xml {
+
+	static parseXmlStringToObject = (stringContent) => {
+		const parsed = this.parse(stringContent);
+		return this.xmlToJson(parsed);
+	}
+
+	static parse = (stringContent) => {
+		const parser = new DOMParser();
+		return parser.parseFromString(stringContent, "text/xml");
+	}
+
 	static xmlToJson = (xml) => {
 		// Create the return object
 		var obj = {};

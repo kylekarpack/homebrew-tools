@@ -4,10 +4,11 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import HomebrewMenu from "./components/Menu";
-import Recipe from "./components/Recipe";
+// import Recipe from "./components/Recipe";
 import { Fermentables } from "./pages/Fermentables";
 import { Hops } from "./pages/Hops";
 import { Yeasts } from "./pages/Yeasts";
+import RecipeList from "./pages/RecipeList";
 
 export default function App() {
 	return (
@@ -18,7 +19,9 @@ export default function App() {
 						<HomebrewMenu></HomebrewMenu>
 					</div>
 					<div className="column">
-						<Route path="/recipe" component={Recipe} />
+						{/* <Route path="/recipe" component={Recipe} /> */}
+
+						<Route path="/recipes" component={RecipeList} />
 						<Route path="/fermentables" component={Fermentables} />
 						<Route path="/yeasts" component={Yeasts} />
 						<Route path="/hops" component={Hops} />

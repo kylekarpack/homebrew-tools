@@ -1,5 +1,7 @@
 import Xml from "./Xml";
+import FileSystem from "./FileSystem";
 
 export {
-	Xml
+	Xml,
+	FileSystem
 };

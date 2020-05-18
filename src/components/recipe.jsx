@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Stats from "./recipe/Stats";
 import Uploader from "./Uploader";
 import RecipeFermentables from "./recipe/RecipeFermentables";
+import RecipeMiscs from "./recipe/RecipeMiscs";
 
 export default function Recipe() {
 	const [recipe, setRecipe] = useState(null);
@@ -22,7 +23,14 @@ export default function Recipe() {
 						<Stats recipe={recipe} />
 					</div>
 					<div className="section">
-						<RecipeFermentables recipe={recipe} />
+						<RecipeFermentables
+							recipe={recipe}
+							pagination={false}
+							filter={false}
+						/>
+					</div>
+					<div className="section">
+						<RecipeMiscs recipe={recipe} pagination={false} filter={false} />
 					</div>
 				</div>
 			) : null}

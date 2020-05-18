@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFilters, useSortBy, useTable, usePagination } from "react-table";
 
-export default function Table({ columns, data, options }) {
+export default function Table({ columns, data, filterColumn, pagination }) {
 	const [filterInput, setFilterInput] = useState("");
 
 	const {
@@ -36,14 +36,14 @@ export default function Table({ columns, data, options }) {
 
 	const handleFilterChange = (e) => {
 		const value = e.target.value || undefined;
-		setFilter(options?.filterColumn, value);
+		setFilter(filterColumn, value);
 		setFilterInput(value);
 	};
 
 	return (
 		<>
 			<br />
-			{options.filter ? (
+			{filterColumn ? (
 				<p className="control has-icons-left">
 					<input
 						className="input"
@@ -95,7 +95,7 @@ export default function Table({ columns, data, options }) {
 					})}
 				</tbody>
 			</table>
-			{options.pagination ? (
+			{pagination ? (
 				<nav className="pagination" role="navigation" aria-label="pagination">
 					<ul className="pagination-list">
 						<li>
