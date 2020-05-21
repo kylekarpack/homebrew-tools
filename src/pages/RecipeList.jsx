@@ -1,8 +1,11 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
 import Table from "../components/Table";
-import { FileSystem } from "../util";
+import { useStores } from "../hooks/useStores";
 
 const RecipeList = () => {
+
+	const { fileStore } = useStores();
 
 	const columns = [
 		{
@@ -10,17 +13,18 @@ const RecipeList = () => {
 			accessor: "name"
 		},
 		{
-			Header: "",
-			accessor: ""
+			Header: "test",
+			accessor: "test"
 		}
 	];
 
+	const files = fileStore.files || [];
+
 	return (
 		<div className="section">
-			Recipes here
-			<Table columns={columns} data={FileSystem.files?.map(el => el.recipe) || []} />
+			<Table columns={columns} data={files.map(el => el.recipe) || []} />
 		</div>
 	);
 };
 
-export default RecipeList;
+export default observer(RecipeList);

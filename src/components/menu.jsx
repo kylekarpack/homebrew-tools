@@ -1,12 +1,17 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { fermentables, hops, yeast } from "../data";
+import { useStores } from "../hooks/useStores";
 import { FileSystem } from "../util";
 
-export default function HomebrewMenu() {
+const HomebrewMenu = () => {
 
-	const openFileSystem = () => {
-		FileSystem.open();
+	const { fileStore } = useStores();
+
+	const openFileSystem = async () => {
+		const files = await FileSystem.open();
+		fileStore.setFiles(files);
 	};
 
 	return (
@@ -16,12 +21,12 @@ export default function HomebrewMenu() {
 			<p className="menu-label">Your Brewing</p>
 			<ul className="menu-list">
 				<li>
-					<a onClick={openFileSystem}>
+					<a onClick={openFileSystem} href="#/">
 						Open Filesystem
 					</a>
 					<NavLink to="/recipes" activeClassName="is-active">
 						Recipes&nbsp;
-						<span className="tag">1</span>
+						<span className="tag">{fileStore.files?.length}</span>
 					</NavLink>
 				</li>
 			</ul>
@@ -48,4 +53,6 @@ export default function HomebrewMenu() {
 			</ul>
 		</aside>
 	);
-}
+};
+
+export default observer(HomebrewMenu);
