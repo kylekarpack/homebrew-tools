@@ -15,7 +15,6 @@ export default class FileSystem {
 					const file = await entry.getFile();
 					const contents = await file.text();
 					const recipe = Xml.parseXmlStringToObject(contents)?.recipes.recipe;
-					console.warn(recipe);
 					files.push({
 						entry,
 						file,
@@ -24,10 +23,10 @@ export default class FileSystem {
 					});
 				}
 			}
-			return files;
 		} catch (e) {
 			console.log(e);
 			//alert("Sorry, your browser doesn't support local filesystem");
 		}
+		return files;
 	}
 }
