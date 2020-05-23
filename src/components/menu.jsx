@@ -1,12 +1,12 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { fermentables, hops, yeast } from "../data";
 import { useStores } from "../hooks/useStores";
 import { FileSystem } from "../util";
+import logo from "../img/logo.svg";
 
 const HomebrewMenu = () => {
-
 	const { fileStore } = useStores();
 
 	const openFileSystem = async () => {
@@ -17,9 +17,14 @@ const HomebrewMenu = () => {
 	return (
 		<aside className="menu" style={{ position: "sticky", top: 0 }}>
 			<br />
-			<br />
-			<p className="menu-label">Your Brewing</p>
 			<ul className="menu-list">
+				<li>
+					<Link to="/">
+						<img src={logo} style={{ maxWidth: "100%", maxHeight: "32px", textAlign: "left" }} />
+					</Link>
+				</li>
+				<li className="menu-label">Your Brewing</li>
+
 				<li>
 					<a onClick={openFileSystem} href="#/">
 						Open Filesystem
