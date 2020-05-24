@@ -1,4 +1,4 @@
-const yeasts = [
+export const yeasts = [
 	{
 		name: "Frankenyeast",
 		lab: "Various",
@@ -2320,5 +2320,3 @@ const yeasts = [
 		notes: "Slow growing bacteria used in secondary to create lactic acid flavor in Belgian lambics. Produces large amounts of lactic acid and diacytl. Prefers anaerobic conditions.\n\nBest for: Belgian Lambic beers\n\n"
 	}
 ];
-
-export default yeasts;

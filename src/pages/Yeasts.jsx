@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import Table from "../components/Table";
-import yeasts from "../data/yeast";
+import { yeasts } from "../data";
 
 export function Yeasts() {
 	const columns = useMemo(

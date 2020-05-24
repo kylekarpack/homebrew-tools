@@ -1,4 +1,4 @@
-const fermentables = [
+export const fermentables = [
 	{
 		grain: "Acid Malt",
 		origin: "Germany",
@@ -2370,5 +2370,3 @@ const fermentables = [
 		notes: "White wheat gives a malty flavor not available from raw wheat. Used in Weiss, Wit and White beers\n\n"
 	}
 ];
-
-export default fermentables;

@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
-import { fermentables, hops, yeast } from "../data";
+import { Link, NavLink } from "react-router-dom";
+import { fermentables, hops, yeasts } from "../data";
 import { useStores } from "../hooks/useStores";
-import { FileSystem } from "../util";
 import logo from "../img/logo.svg";
+import { FileSystem } from "../util";
 
 const HomebrewMenu = () => {
 	const { fileStore } = useStores();
@@ -55,7 +55,7 @@ const HomebrewMenu = () => {
 				<li>
 					<NavLink to="/yeasts" activeClassName="is-active">
 						Yeasts&nbsp;
-						<span className="tag">{yeast.length}</span>
+						<span className="tag">{yeasts.length}</span>
 					</NavLink>
 				</li>
 				<li>

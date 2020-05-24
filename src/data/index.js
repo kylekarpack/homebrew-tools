@@ -1,13 +1,5 @@
-import fermentables from "./fermentables";
-import yeast from "./yeast";
-import hops from "./hops";
-import beerTypes from "./beer-types";
-import beerCategories from "./beer-categories";
-
-export {
-	fermentables,
-	yeast,
-	hops,
-	beerTypes,
-	beerCategories
-};
+export * from "./beer-categories";
+export * from "./beer-types";
+export * from "./hops";
+export * from "./yeasts";
+export * from "./fermentables";

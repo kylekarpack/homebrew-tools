@@ -1,4 +1,4 @@
-const hops = [
+export const hops = [
 	{
 		hop: "Admiral",
 		origin: "United Kingdom",
@@ -856,5 +856,3 @@ const hops = [
 		notes: "Super high alpha bittering hops developed in the Yakima Valley, WA Used for: Bittering, intense aroma Aroma: Aromatic, pleasant Substitutes: Other high alpha hops"
 	}
 ];
-
-export default hops;

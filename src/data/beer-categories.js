@@ -1,4 +1,4 @@
-const beerCategories = [
+export const beerCategories = [
 	{
 		code: "1A",
 		category: "Light Lager",
@@ -3740,5 +3740,3 @@ const beerCategories = [
 		co2max: 2.5,
 	},
 ];
-
-export default beerCategories;

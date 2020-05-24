@@ -1,4 +1,4 @@
-const beerTypes = [
+export const beerTypes = [
 	"Standard American Beer", 
 	"International Lager", 
 	"Czech Lager", 
@@ -57,5 +57,3 @@ const beerTypes = [
 	"Mead", 
 	"Spice/Herb/Vegetable Beer"
 ];
-
-export default beerTypes;

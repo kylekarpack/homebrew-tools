@@ -1,6 +1,6 @@
 import { Xml } from ".";
 
-export default class FileSystem {
+export class FileSystem {
 
 	static async open() {
 		const files = [];

@@ -1,6 +1,6 @@
 import { camelCase } from "lodash";
 
-export default class Xml {
+export class Xml {
 
 	static parseXmlStringToObject = (stringContent) => {
 		const parsed = this.parse(stringContent);
