@@ -44,7 +44,7 @@ export default function Table({ columns, data, filterColumn, pagination }) {
 		<>
 			<br />
 			{filterColumn ? (
-				<p className="control has-icons-left">
+				<p className="control has-icons-left" style={{ marginBottom: "1em" }}>
 					<input
 						className="input"
 						placeholder="Search"

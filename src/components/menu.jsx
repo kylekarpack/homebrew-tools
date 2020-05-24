@@ -20,7 +20,15 @@ const HomebrewMenu = () => {
 			<ul className="menu-list">
 				<li>
 					<Link to="/">
-						<img src={logo} style={{ maxWidth: "100%", maxHeight: "32px", textAlign: "left" }} />
+						<img
+							src={logo}
+							style={{
+								display: "block",
+								maxWidth: "100%",
+								maxHeight: "32px",
+								textAlign: "left",
+							}}
+						/>
 					</Link>
 				</li>
 				<li className="menu-label">Your Brewing</li>
