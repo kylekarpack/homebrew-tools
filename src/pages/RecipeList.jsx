@@ -3,7 +3,7 @@ import React from "react";
 import Table from "../components/Table";
 import { useStores } from "../hooks/useStores";
 
-const RecipeList = () => {
+let RecipeList = () => {
 
 	const { fileStore } = useStores();
 
@@ -27,4 +27,6 @@ const RecipeList = () => {
 	);
 };
 
-export default observer(RecipeList);
+RecipeList = observer(RecipeList);
+
+export { RecipeList };

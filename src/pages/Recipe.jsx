@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Stats from "./recipe/Stats";
-import Uploader from "./Uploader";
-import RecipeFermentables from "./recipe/RecipeFermentables";
-import RecipeMiscs from "./recipe/RecipeMiscs";
+import Stats from "../components/recipe/Stats";
+import Uploader from "../components/Uploader";
+import RecipeFermentables from "../components/recipe/RecipeFermentables";
+import RecipeMiscs from "../components/recipe/RecipeMiscs";
 
-export default function Recipe() {
+export function Recipe() {
 	const [recipe, setRecipe] = useState(null);
 
 	const onLoad = (data) => {

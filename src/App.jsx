@@ -1,14 +1,10 @@
 import "@fortawesome/fontawesome-free/css/all.css";
 import "bulma/css/bulma.css";
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import HomebrewMenu from "./components/Menu";
-// import Recipe from "./components/Recipe";
-import { Fermentables } from "./pages/Fermentables";
-import { Hops } from "./pages/Hops";
-import { Yeasts } from "./pages/Yeasts";
-import RecipeList from "./pages/RecipeList";
+import { Fermentables, Hops, Recipe, RecipeList, Yeasts } from "./pages";
 
 export default function App() {
 	return (
@@ -19,11 +15,13 @@ export default function App() {
 						<HomebrewMenu></HomebrewMenu>
 					</div>
 					<div className="column">
-						<Route path="/recipes/:id" component={RecipeList} />
-						<Route path="/recipes" component={RecipeList} />
-						<Route path="/fermentables" component={Fermentables} />
-						<Route path="/yeasts" component={Yeasts} />
-						<Route path="/hops" component={Hops} />
+						<Switch>
+							<Route path="/recipes/:id" component={Recipe} />
+							<Route path="/recipes" component={RecipeList} />
+							<Route path="/fermentables" component={Fermentables} />
+							<Route path="/yeasts" component={Yeasts} />
+							<Route path="/hops" component={Hops} />
+						</Switch>
 					</div>
 				</div>
 			</div>
