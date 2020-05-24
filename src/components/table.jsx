@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { useFilters, useSortBy, useTable, usePagination } from "react-table";
 
-export default function Table({ columns, data, filterColumn, pagination }) {
+export default function Table({
+	columns,
+	data,
+	filterColumn,
+	pagination,
+	className,
+}) {
 	const [filterInput, setFilterInput] = useState("");
 
 	const {
@@ -58,7 +64,7 @@ export default function Table({ columns, data, filterColumn, pagination }) {
 			) : null}
 			<table
 				{...getTableProps()}
-				className="table is-bordered is-striped is-fullwidth">
+				className={`table is-bordered is-striped is-fullwidth ${className}`}>
 				<thead>
 					{headerGroups.map((headerGroup) => (
 						<tr {...headerGroup.getHeaderGroupProps()}>

@@ -4,25 +4,28 @@ import Table from "../components/Table";
 import { useStores } from "../hooks/useStores";
 
 let RecipeList = () => {
-
 	const { fileStore } = useStores();
 
 	const columns = [
 		{
 			Header: "Name",
-			accessor: "name"
+			accessor: "name",
 		},
 		{
 			Header: "test",
-			accessor: "test"
-		}
+			accessor: "test",
+		},
 	];
 
 	const files = fileStore.files || [];
 
 	return (
 		<div className="section">
-			<Table columns={columns} data={files.map(el => el.recipe) || []} />
+			<Table
+				columns={columns}
+				data={files.map((el) => el.recipe) || []}
+				className="is-hoverable"
+			/>
 		</div>
 	);
 };
