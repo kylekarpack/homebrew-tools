@@ -1,8 +1,6 @@
-
-import { observable, decorate, action } from "mobx";
+import { action, decorate, observable } from "mobx";
 
 class FileStore {
-
 	files = [];
 
 	clearFiles() {
@@ -17,11 +15,9 @@ class FileStore {
 		this.files = files;
 	}
 
-	setRandom() {
-		this.random = Math.random();
+	getFile(fileName) {
+		return this.files.find((el) => el.name === fileName);
 	}
-
-	random = Math.random();
 }
 
 export default decorate(FileStore, {
@@ -29,5 +25,5 @@ export default decorate(FileStore, {
 	clearFiles: action,
 	addFile: action,
 	setFiles: action,
-	setRandom: action
+	getFile: action
 });

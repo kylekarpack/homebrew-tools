@@ -19,14 +19,11 @@ export default function App() {
 						<HomebrewMenu></HomebrewMenu>
 					</div>
 					<div className="column">
-						{/* <Route path="/recipe" component={Recipe} /> */}
-
+						<Route path="/recipes/:id" component={RecipeList} />
 						<Route path="/recipes" component={RecipeList} />
 						<Route path="/fermentables" component={Fermentables} />
 						<Route path="/yeasts" component={Yeasts} />
 						<Route path="/hops" component={Hops} />
-						{/* <HomebrewUploader onRecipeSelected={handleRecipe}></HomebrewUploader>
-							<HomebrewTable data={this.state.recipe ? this.state.recipe.fermentables.fermentable : []}></HomebrewTable> */}
 					</div>
 				</div>
 			</div>

@@ -21,6 +21,7 @@ const HomebrewMenu = () => {
 				<li>
 					<Link to="/">
 						<img
+							alt="Homebrew Logo"
 							src={logo}
 							style={{
 								display: "block",
