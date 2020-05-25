@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import HomebrewMenu from "./components/Menu";
+import { HomebrewMenu } from "./components/Menu";
 import { Fermentables, Hops, Recipe, RecipeList, Yeasts } from "./pages";
 
 export default function App() {

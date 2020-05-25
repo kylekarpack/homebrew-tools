@@ -6,7 +6,7 @@ import { useStores } from "../hooks/useStores";
 import logo from "../img/logo.svg";
 import { FileSystem } from "../util";
 
-const HomebrewMenu = () => {
+export const HomebrewMenu = observer(() => {
 	const { fileStore } = useStores();
 
 	const openFileSystem = async () => {
@@ -67,6 +67,4 @@ const HomebrewMenu = () => {
 			</ul>
 		</aside>
 	);
-};
-
-export default observer(HomebrewMenu);
+});
