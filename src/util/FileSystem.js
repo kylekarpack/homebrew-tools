@@ -27,6 +27,7 @@ export class FileSystem {
 			console.log(e);
 			//alert("Sorry, your browser doesn't support local filesystem");
 		}
+		
 		return files;
 	}
 }
