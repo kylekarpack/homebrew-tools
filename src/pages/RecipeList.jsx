@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import Table from "../components/Table";
 import { useStores } from "../hooks/useStores";
 
-let RecipeList = () => {
+const RecipeList = observer(() => {
 	const { fileStore } = useStores();
 
 	const columns = useMemo(
@@ -31,8 +31,6 @@ let RecipeList = () => {
 			/>
 		</div>
 	);
-};
-
-RecipeList = observer(RecipeList);
+});
 
 export { RecipeList };
