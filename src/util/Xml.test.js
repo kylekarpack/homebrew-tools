@@ -1,7 +1,9 @@
+import * as fs from "fs";
+import * as path from "path";
 import { Xml } from "./";
-import raw from "raw.macro";
 
-const content = raw("../../recipes/GuavaMilkshake.xml");
+const file = path.join(__dirname, "./__mocks__", "GuavaMilkshake.xml");
+const content = fs.readFileSync(file).toString();
 
 describe("XML utilities work", () => {
 	it("parses XML string content", () => {
