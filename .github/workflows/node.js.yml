@@ -25,13 +25,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install Packages
-      run: npm install
+      run: yarn install
     - name: Build
-      run: npm run build
+      run: yarn build
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.6.0
       env:
         CC_TEST_REPORTER_ID: 56f4b4f54bab79a166e59ef2c9e284c1ad3f06cd7ce570ec1ba1e85953ce4802
       with:
-        coverageCommand: npm run test -- --coverage
+        coverageCommand: yarn test --coverage
         debug: true
