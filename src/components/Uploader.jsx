@@ -1,23 +1,23 @@
 import React from "react";
 import { Xml } from "../util";
 
-export const fileChange = (e, onLoad) => {
-	const reader = new FileReader();
-	reader.onload = (e) => {
-		let json = Xml.parseXmlStringToObject(e.target.result);
-		json = json?.recipes?.recipe;
-		onLoad(json);
-	};
-
-	reader.onerror = (e) => {
-		throw e;
-	};
-
-	reader.readAsText(e.target.files[0], "UTF-8");
-};
-
 export default function Uploader({ onLoad }) {
 	const fileInputRef = React.createRef();
+
+	const fileChange = (e, onLoad) => {
+		const reader = new FileReader();
+		reader.onload = (e) => {
+			let json = Xml.parseXmlStringToObject(e.target.result);
+			json = json?.recipes?.recipe;
+			onLoad(json);
+		};
+	
+		reader.onerror = (e) => {
+			throw e;
+		};
+	
+		reader.readAsText(e.target.files[0], "UTF-8");
+	};
 
 	return (
 		<>

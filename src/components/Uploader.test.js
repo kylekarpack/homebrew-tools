@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
-import Uploader, { fileChange } from "./Uploader";
+import Uploader from "./Uploader";
 
 describe.skip("Uploader component", () => {
 	it("renders without crashing", () => {
@@ -23,7 +23,7 @@ describe.skip("Uploader component", () => {
 		};
 
 		const readAsText = jest.spyOn(FileReader.prototype, "readAsText");
-		fileChange(event, fn);
+		//fileChange(event, fn);
 		expect(readAsText).toBeCalled();
 	});
 });
