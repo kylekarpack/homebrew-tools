@@ -1,6 +1,6 @@
 # homebrew-tools
 
-![Node.js CI](https://github.com/kylekarpack/homebrew-tools/workflows/Node.js%20CI/badge.svg?branch=master)
+![Tests](https://github.com/kylekarpack/homebrew-tools/workflows/Node.js%20CI/badge.svg?branch=master)
 
 A collection of simple tools for homebrewers. WIP.
 
