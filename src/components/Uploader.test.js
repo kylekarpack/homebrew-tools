@@ -2,12 +2,12 @@ import { shallow } from "enzyme";
 import React from "react";
 import Uploader, { fileChange } from "./Uploader";
 
-describe("Uploader component", () => {
+describe.skip("Uploader component", () => {
 	it("renders without crashing", () => {
 		shallow(<Uploader />);
 	});
 
-	it.skip("loads a file", () => {
+	it("loads a file", () => {
 		const fn = jest.fn();
 		const blob = new Blob();
 		const event = {
