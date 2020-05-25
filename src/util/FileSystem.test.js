@@ -1,7 +1,7 @@
 import { FileSystem } from "./";
 
 describe("FileSystem util handling", () => {
-	it.skip("handles rejection of permissions", async () => {
+	it("handles rejection of permissions", async () => {
 		window.chooseFileSystemEntries = jest.fn().mockImplementation(async () => {
 			return {
 				getEntries: () => [],
