@@ -27,9 +27,8 @@
     "eject": "react-scripts eject"
   },
   "jest": {
-    "moduleNameMapper": {
-      "recipes/GuavaMilkshake.xml": "<rootDir>/recipes/GuavaMilkshake.xml"
-    }
+		"collectCoverage": true,
+		"coverageReporters": ["lcov"]
   },
   "eslintConfig": {
     "extends": "react-app"

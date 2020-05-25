@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { Xml } from "./";
 
+// ToDo: mock fs per https://jestjs.io/docs/en/manual-mocks
 const file = path.join(__dirname, "./__mocks__", "GuavaMilkshake.xml");
 const content = fs.readFileSync(file).toString();
 
