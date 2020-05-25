@@ -1,6 +1,6 @@
-# homebrew-tools
+![Tests](https://github.com/kylekarpack/homebrew-tools/workflows/Node.js%20CI/badge.svg?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/f45478c1ee6b1935debf/maintainability)](https://codeclimate.com/github/kylekarpack/homebrew-tools/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/f45478c1ee6b1935debf/test_coverage)](https://codeclimate.com/github/kylekarpack/homebrew-tools/test_coverage)
 
-![Tests](https://github.com/kylekarpack/homebrew-tools/workflows/Node.js%20CI/badge.svg?branch=master)
+# homebrew-tools
 
 A collection of simple tools for homebrewers. WIP.
 
