@@ -1,21 +1,24 @@
 import { observer } from "mobx-react-lite";
-import React from "react";
+import React, { useMemo } from "react";
 import Table from "../components/Table";
 import { useStores } from "../hooks/useStores";
 
 let RecipeList = () => {
 	const { fileStore } = useStores();
 
-	const columns = [
-		{
-			Header: "Name",
-			accessor: "name",
-		},
-		{
-			Header: "test",
-			accessor: "test",
-		},
-	];
+	const columns = useMemo(
+		() => [
+			{
+				Header: "Name",
+				accessor: "name",
+			},
+			{
+				Header: "test",
+				accessor: "test",
+			},
+		],
+		[]
+	);
 
 	const files = fileStore.files || [];
 
