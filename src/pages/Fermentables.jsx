@@ -21,7 +21,6 @@ export function Fermentables() {
 					);
 				},
 			},
-
 			{
 				Header: "Origin",
 				accessor: "origin",

@@ -1,9 +1,10 @@
 import { camelCase } from "lodash";
 
 export class Xml {
+
 	static parseXmlStringToObject = (stringContent) => {
-		const parsed = this.parse(stringContent);
-		return this.xmlToJson(parsed);
+		const parsed = Xml.parse(stringContent);
+		return Xml.xmlToJson(parsed);
 	};
 
 	static parse = (stringContent) => {
@@ -15,9 +16,10 @@ export class Xml {
 		// Create the return object
 		let obj = {};
 
+		/*
 		if (xml.nodeType === 1) {
 			// element
-			// do attributes
+			// do attributes (not needed for BeerXml?)
 			if (xml.attributes.length > 0) {
 				obj["@attributes"] = {};
 				for (let j = 0; j < xml.attributes.length; j++) {
@@ -26,7 +28,8 @@ export class Xml {
 						attribute.nodeValue;
 				}
 			}
-		} else if (xml.nodeType === 3) {
+		} */
+		if (xml.nodeType === 3) {
 			// text
 			obj = xml.nodeValue;
 		}
