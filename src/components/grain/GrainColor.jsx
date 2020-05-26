@@ -1,6 +1,9 @@
 import React from "react";
 
 export const srmToHex = (srm) => {
+
+	srm = srm || 0;
+
 	let r = 0,
 		g = 0,
 		b = 0;
