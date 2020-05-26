@@ -1,9 +1,7 @@
 import React from "react";
 import Table from "../Table";
 
-export default function RecipeFermentables({ recipe }) {
-	console.log(recipe.fermentables);
-
+export default ({ recipe }) => {
 	const columns = [
 		{
 			Header: "Amount",
@@ -20,4 +18,4 @@ export default function RecipeFermentables({ recipe }) {
 		<Table columns={columns} data={recipe.fermentables} />
 	</>;
 
-}
+};

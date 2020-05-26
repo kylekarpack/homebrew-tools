@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "../Table";
 
-export default function RecipeMiscs({ recipe }) {
+export default ({ recipe }) => {
 	const { miscs } = recipe;
 
 	const columns = [
@@ -28,4 +28,4 @@ export default function RecipeMiscs({ recipe }) {
 		<Table columns={columns} data={miscs} />
 	</>;
 
-}
+};
