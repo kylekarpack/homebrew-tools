@@ -4,7 +4,7 @@ import Uploader from "../components/Uploader";
 import RecipeFermentables from "../components/recipe/RecipeFermentables";
 import RecipeMiscs from "../components/recipe/RecipeMiscs";
 
-export function Recipe() {
+export const Recipe = () => {
 	const [recipe, setRecipe] = useState(null);
 
 	const onLoad = (data) => {
@@ -36,4 +36,4 @@ export function Recipe() {
 			) : null}
 		</>
 	);
-}
+};

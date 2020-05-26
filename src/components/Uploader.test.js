@@ -7,7 +7,7 @@ describe("Uploader component", () => {
 		shallow(<Uploader />);
 	});
 
-	it.skip("loads a file", () => {
+	it("loads a file", () => {
 		const fn = jest.fn();
 		const blob = new Blob();
 		const event = {
