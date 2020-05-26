@@ -32,4 +32,6 @@ jobs:
         CC_TEST_REPORTER_ID: 56f4b4f54bab79a166e59ef2c9e284c1ad3f06cd7ce570ec1ba1e85953ce4802
       with:
         coverageCommand: yarn test --coverage
+        coverageLocations:
+          "${{github.workspace}}/coverage/lcov.info:lcov"
         debug: true
