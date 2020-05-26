@@ -31,7 +31,8 @@
 			"node_modules",
 			"serviceWorker.js",
 			"index.js"
-		]
+		],
+		"coverageReporters": ["lcov"]
 	},
 	"eslintConfig": {
 		"extends": "react-app"
