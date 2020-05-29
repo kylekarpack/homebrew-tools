@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeadingItem = ({ text, value }) => {
+export const HeadingItem = ({ text, value }) => {
 	return (
 		<div className="level-item has-text-centered">
 			<div>
