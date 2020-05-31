@@ -11,6 +11,7 @@ describe("FileStore store", () => {
 		fs.addFile({ name: "test" });
 		expect(fs.files.length).toBe(1);
 		expect(fs.files[0].name).toBe("test");
+		expect(fs.files[0]).toBe(fs.getFile("test"));
 		fs.clearFiles();
 		expect(fs.files.length).toBe(0);
 	});
