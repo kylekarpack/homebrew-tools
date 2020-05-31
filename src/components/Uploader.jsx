@@ -1,19 +1,26 @@
 import React from "react";
 import { Xml } from "../util";
 
-export const fileChange = (e, onLoad) => {
-	const reader = new FileReader();
-	reader.onload = (e) => {
-		let json = Xml.parseXmlStringToObject(e.target.result);
+const readFileAsync = (file) => {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.onload = () => {
+			resolve(reader.result);
+		};
+		reader.onerror = reject;
+		reader.readAsText(file, "UTF-8");
+	});
+};
+
+export const fileChange = async (e, onLoad) => {
+	try {
+		const result = await readFileAsync(e.target.files[0]);
+		let json = Xml.parseXmlStringToObject(result);
 		json = json?.recipes?.recipe;
 		onLoad(json);
-	};
-
-	reader.onerror = (e) => {
-		throw e;
-	};
-
-	reader.readAsText(e.target.files[0], "UTF-8");
+	} catch {
+		// Do nothing
+	}
 };
 
 export default function Uploader({ onLoad }) {
