@@ -35,7 +35,7 @@ export const HomebrewMenu = observer(() => {
 				<li className="menu-label">Your Brewing</li>
 
 				<li>
-					<a onClick={openFileSystem} href="#/">
+					<a id="fs" onClick={openFileSystem} href="#/">
 						Open Filesystem
 					</a>
 					<NavLink to="/recipes" activeClassName="is-active">
