@@ -168,7 +168,7 @@ export default function Table({
 						Next page
 					</button>
 					<select
-						className="pagination-next"
+						className="pagination"
 						value={pageSize}
 						onChange={(e) => {
 							setPageSize(Number(e.target.value));
