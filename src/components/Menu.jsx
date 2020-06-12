@@ -1,17 +1,18 @@
-import { observer } from "mobx-react-lite";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import { fermentables, hops, yeasts } from "../data";
-import { useStores } from "../hooks/useStores";
 import logo from "../img/logo.svg";
+import { files } from "../state/files";
 import { FileSystem } from "../util";
 
-export const HomebrewMenu = observer(() => {
-	const { fileStore } = useStores();
+export const HomebrewMenu = () => {
+
+	const [filesValue, setFilesValue] = useRecoilState(files);
 
 	const openFileSystem = async () => {
 		const files = await FileSystem.open();
-		fileStore.setFiles(files);
+		setFilesValue(files);
 	};
 
 	return (
@@ -40,7 +41,7 @@ export const HomebrewMenu = observer(() => {
 					</a>
 					<NavLink to="/recipes" activeClassName="is-active">
 						Recipes&nbsp;
-						<span className="tag">{fileStore.files?.length}</span>
+						<span className="tag">{filesValue?.length}</span>
 					</NavLink>
 				</li>
 			</ul>
@@ -67,4 +68,4 @@ export const HomebrewMenu = observer(() => {
 			</ul>
 		</aside>
 	);
-});
+};
