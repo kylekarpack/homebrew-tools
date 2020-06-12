@@ -11,14 +11,13 @@
 		"enzyme": "^3.11.0",
 		"enzyme-adapter-react-16": "^1.15.2",
 		"lodash": "^4.17.11",
-		"mobx": "^5.15.4",
-		"mobx-react-lite": "^2.0.7",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-router-dom": "^5.0.0",
 		"react-scripts": "^3.4.1",
 		"react-table": "^7.1.0",
-		"react-test-renderer": "^16.13.1"
+		"react-test-renderer": "^16.13.1",
+		"recoil": "^0.0.8"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -32,7 +31,9 @@
 			"serviceWorker.js",
 			"index.js"
 		],
-		"coverageReporters": ["lcov"]
+		"coverageReporters": [
+			"lcov"
+		]
 	},
 	"eslintConfig": {
 		"extends": "react-app"
