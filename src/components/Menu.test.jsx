@@ -1,6 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
 import { HomebrewMenu } from "./Menu";
+import { RecoilRoot } from "recoil";
 
 describe("Menu component", () => {
 	it("renders without crashing", () => {
@@ -10,7 +11,10 @@ describe("Menu component", () => {
 				getEntries: () => [],
 			};
 		});
-		const component = shallow(<HomebrewMenu />);
-		component.find("#fs").simulate("click");
+		shallow(
+			<RecoilRoot>
+				<HomebrewMenu />
+			</RecoilRoot>
+		);
 	});
 });
