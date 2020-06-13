@@ -1,22 +1,24 @@
 {
 	"name": "homebrew-tools",
-	"version": "0.1.0",
-	"private": true,
+	"version": "0.2.0",
+	"private": false,
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^5.13.0",
-		"@types/jest": "^25.2.3",
-		"@types/node": "^14.0.5",
-		"babel-preset-react-app": "^9.1.2",
 		"bulma": "^0.8.2",
-		"enzyme": "^3.11.0",
-		"enzyme-adapter-react-16": "^1.15.2",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-router-dom": "^5.0.0",
 		"react-scripts": "^3.4.1",
 		"react-table": "^7.1.0",
-		"react-test-renderer": "^16.13.1",
 		"recoil": "^0.0.8"
+	},
+	"devDependencies": {
+		"@types/jest": "^25.2.3",
+		"@types/node": "^14.0.5",
+		"babel-preset-react-app": "^9.1.2",
+		"enzyme": "^3.11.0",
+		"enzyme-adapter-react-16": "^1.15.2",
+		"react-test-renderer": "^16.13.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
