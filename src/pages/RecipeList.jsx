@@ -1,10 +1,11 @@
-import { observer } from "mobx-react-lite";
 import React, { useMemo } from "react";
+import { useRecoilValue } from "recoil";
 import Table from "../components/Table";
-import { useStores } from "../hooks/useStores";
+import { files } from "../state/files";
 
-const RecipeList = observer(() => {
-	const { fileStore } = useStores();
+export const RecipeList = () => {
+
+	const filesValue = useRecoilValue(files);
 
 	const columns = useMemo(
 		() => [
@@ -20,17 +21,13 @@ const RecipeList = observer(() => {
 		[]
 	);
 
-	const files = fileStore.files || [];
-
 	return (
 		<div className="section">
 			<Table
 				columns={columns}
-				data={files.map((el) => el.recipe) || []}
+				data={filesValue.map((el) => el.recipe) || []}
 				className="is-hoverable"
 			/>
 		</div>
 	);
-});
-
-export { RecipeList };
+};
