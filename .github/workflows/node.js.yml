@@ -28,6 +28,8 @@ jobs:
       run: yarn install
     - name: Run Tests
       run: yarn test --coverage --testResultsProcessor=jest-sonar-reporter --watchAll=false
+    - name: Move coverage files
+      run: sed -i "s|SF:/.*/src/|SF:/github/workspace/src/|g" coverage/lcov.info
     - name: Analyze with SonarCloud
       uses: sonarsource/sonarcloud-github-action@master
       env:
