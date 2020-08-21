@@ -34,7 +34,8 @@
 			"index.js"
 		],
 		"coverageReporters": [
-			"lcov"
+			"lcov",
+			"text"
 		]
 	},
 	"eslintConfig": {

@@ -1,4 +1,4 @@
-![Tests](https://github.com/kylekarpack/homebrew-tools/workflows/Node.js%20CI/badge.svg?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/f45478c1ee6b1935debf/maintainability)](https://codeclimate.com/github/kylekarpack/homebrew-tools/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/f45478c1ee6b1935debf/test_coverage)](https://codeclimate.com/github/kylekarpack/homebrew-tools/test_coverage)
+![build](https://github.com/kylekarpack/homebrew-tools/workflows/build/badge.svg) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=kylekarpack_homebrew-tools&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=kylekarpack_homebrew-tools) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kylekarpack_homebrew-tools&metric=coverage)](https://sonarcloud.io/dashboard?id=kylekarpack_homebrew-tools)
 
 # homebrew-tools
 
