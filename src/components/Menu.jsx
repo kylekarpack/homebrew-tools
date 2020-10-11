@@ -17,8 +17,6 @@ export const HomebrewMenu = () => {
 	return (
 		<Menu
 			mode="inline"
-			defaultSelectedKeys={["1"]}
-			defaultOpenKeys={["sub1"]}
 			style={{ height: "100%", borderRight: 0 }}>
 			<Menu.ItemGroup key="sub1" title="Your Brewing">
 				<Menu.Item key="1">
