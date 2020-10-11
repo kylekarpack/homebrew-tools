@@ -29,7 +29,5 @@ export function Hops() {
 		[]
 	);
 
-	return (
-		<Table columns={columns} data={hops} pagination={true} filterColumn="hop" />
-	);
+	return <Table columns={columns} data={hops} pagination={true} />;
 }

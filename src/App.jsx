@@ -1,5 +1,4 @@
-import "@fortawesome/fontawesome-free/css/all.css";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from "recoil";
@@ -41,11 +40,6 @@ export default function App() {
 							<HomebrewMenu />
 						</Sider>
 						<Layout style={{ padding: "0 24px 24px" }}>
-							<Breadcrumb style={{ margin: "16px 0" }}>
-								<Breadcrumb.Item>Home</Breadcrumb.Item>
-								<Breadcrumb.Item>List</Breadcrumb.Item>
-								<Breadcrumb.Item>App</Breadcrumb.Item>
-							</Breadcrumb>
 							<Content
 								className="site-layout-background"
 								style={{
