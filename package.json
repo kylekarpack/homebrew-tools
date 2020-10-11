@@ -2,6 +2,7 @@
 	"name": "homebrew-tools",
 	"version": "0.2.0",
 	"private": false,
+	"license": "MIT",
 	"dependencies": {
 		"@ant-design/icons": "^4.2.2",
 		"antd": "^4.7.0",
