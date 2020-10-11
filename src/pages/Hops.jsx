@@ -6,24 +6,24 @@ export function Hops() {
 	const columns = useMemo(
 		() => [
 			{
-				Header: "Name",
-				accessor: "hop",
+				title: "Name",
+				dataIndex: "hop",
 			},
 			{
-				Header: "Origin",
-				accessor: "origin",
+				title: "Origin",
+				dataIndex: "origin",
 			},
 			{
-				Header: "Type",
-				accessor: "type",
+				title: "Type",
+				dataIndex: "type",
 			},
 			{
-				Header: "A",
-				accessor: "alpha",
+				title: "A",
+				dataIndex: "alpha",
 			},
 			{
-				Header: "B",
-				accessor: "beta",
+				title: "B",
+				dataIndex: "beta",
 			},
 		],
 		[]

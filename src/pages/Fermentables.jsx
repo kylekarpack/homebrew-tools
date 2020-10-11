@@ -3,7 +3,7 @@ import GrainColor from "../components/grain/GrainColor";
 import Table from "../components/Table";
 import { fermentables } from "../data";
 
-export const ColorCell = ({ cell: { value } }) => {
+export const ColorCell = (value) => {
 	return (
 		<>
 			<GrainColor color={value} /> {value}
@@ -15,17 +15,17 @@ export const Fermentables = () => {
 	const columns = useMemo(
 		() => [
 			{
-				Header: "Grain",
-				accessor: "grain",
+				title: "Grain",
+				dataIndex: "grain",
 			},
 			{
-				Header: "Color",
-				accessor: "color",
-				Cell: ColorCell
+				title: "Color",
+				dataIndex: "color",
+				render: ColorCell,
 			},
 			{
-				Header: "Origin",
-				accessor: "origin",
+				title: "Origin",
+				dataIndex: "origin",
 			},
 		],
 		[]
@@ -36,7 +36,6 @@ export const Fermentables = () => {
 			columns={columns}
 			data={fermentables}
 			pagination={true}
-			filterColumn="grain"
 		/>
 	);
 };
