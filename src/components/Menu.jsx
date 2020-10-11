@@ -1,10 +1,11 @@
 import { Badge, Menu } from "antd";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { fermentables, hops, yeasts } from "../data";
 import { files } from "../state/files";
 import { FileSystem } from "../util";
+import logo from "../img/logo.svg";
 
 export const HomebrewMenu = () => {
 	const [filesValue, setFilesValue] = useRecoilState(files);
@@ -15,9 +16,25 @@ export const HomebrewMenu = () => {
 	};
 
 	return (
-		<Menu
-			mode="inline"
-			style={{ height: "100%", borderRight: 0 }}>
+		<Menu mode="inline" style={{ height: "100%", borderRight: 0 }}>
+			<Menu.ItemGroup>
+				<Menu.Item>
+					<div>
+						<Link to="/">
+							<img
+								alt="Homebrew Logo"
+								src={logo}
+								style={{
+									display: "block",
+									maxWidth: "100%",
+									maxHeight: "32px",
+									textAlign: "left",
+								}}
+							/>
+						</Link>
+					</div>
+				</Menu.Item>
+			</Menu.ItemGroup>
 			<Menu.ItemGroup key="sub1" title="Your Brewing">
 				<Menu.Item key="1">
 					<a id="fs" onClick={openFileSystem} href="#/">
