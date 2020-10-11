@@ -33,7 +33,7 @@ export const srmToHex = (srm) => {
 		if (srm < 4) {
 			b = -54 * srm + 216;
 		} else if (srm >= 4 && srm < 7) {
-			b = 0;
+			// B is already 0
 		} else if (srm >= 7 && srm < 9) {
 			b = 13 * srm - 91;
 		} else if (srm >= 9 && srm < 13) {

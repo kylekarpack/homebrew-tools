@@ -11,8 +11,8 @@ export const HomebrewMenu = () => {
 	const [filesValue, setFilesValue] = useRecoilState(files);
 
 	const openFileSystem = async () => {
-		const files = await FileSystem.open();
-		setFilesValue(files);
+		const fsFiles = await FileSystem.open();
+		setFilesValue(fsFiles);
 	};
 
 	return (
