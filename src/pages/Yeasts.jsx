@@ -6,28 +6,28 @@ export function Yeasts() {
 	const columns = useMemo(
 		() => [
 			{
-				Header: "Name",
-				accessor: "name",
+				title: "Name",
+				dataIndex: "name",
 			},
 			{
-				Header: "Lab",
-				accessor: "lab",
+				title: "Lab",
+				dataIndex: "lab",
 			},
 			{
-				Header: "Form",
-				accessor: "form",
+				title: "Form",
+				dataIndex: "form",
 			},
 			{
-				Header: "Temp",
-				accessor: "temp",
+				title: "Temp",
+				dataIndex: "temp",
 			},
 			{
-				Header: "Att",
-				accessor: "attenuationPercent",
+				title: "Att",
+				dataIndex: "attenuationPercent",
 			},
 			{
-				Header: "Floc",
-				accessor: "flocculation",
+				title: "Floc",
+				dataIndex: "flocculation",
 			},
 		],
 		[]
@@ -38,7 +38,6 @@ export function Yeasts() {
 			columns={columns}
 			data={yeasts}
 			pagination={true}
-			filterColumn="name"
 		/>
 	);
 }

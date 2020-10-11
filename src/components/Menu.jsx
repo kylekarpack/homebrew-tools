@@ -1,13 +1,13 @@
+import { Badge, Menu } from "antd";
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { fermentables, hops, yeasts } from "../data";
-import logo from "../img/logo.svg";
 import { files } from "../state/files";
 import { FileSystem } from "../util";
+import logo from "../img/logo.svg";
 
 export const HomebrewMenu = () => {
-
 	const [filesValue, setFilesValue] = useRecoilState(files);
 
 	const openFileSystem = async () => {
@@ -16,56 +16,58 @@ export const HomebrewMenu = () => {
 	};
 
 	return (
-		<aside className="menu" style={{ position: "sticky", top: 0 }}>
-			<br />
-			<ul className="menu-list">
-				<li>
-					<Link to="/">
-						<img
-							alt="Homebrew Logo"
-							src={logo}
-							style={{
-								display: "block",
-								maxWidth: "100%",
-								maxHeight: "32px",
-								textAlign: "left",
-							}}
-						/>
-					</Link>
-				</li>
-				<li className="menu-label">Your Brewing</li>
-
-				<li>
+		<Menu mode="inline" style={{ height: "100%", borderRight: 0 }}>
+			<Menu.ItemGroup>
+				<Menu.Item>
+					<div>
+						<Link to="/">
+							<img
+								alt="Homebrew Logo"
+								src={logo}
+								style={{
+									display: "block",
+									maxWidth: "100%",
+									maxHeight: "32px",
+									textAlign: "left",
+								}}
+							/>
+						</Link>
+					</div>
+				</Menu.Item>
+			</Menu.ItemGroup>
+			<Menu.ItemGroup key="sub1" title="Your Brewing">
+				<Menu.Item key="1">
 					<a id="fs" onClick={openFileSystem} href="#/">
 						Open Filesystem
 					</a>
+				</Menu.Item>
+				<Menu.Item key="2">
 					<NavLink to="/recipes" activeClassName="is-active">
 						Recipes&nbsp;
-						<span className="tag">{filesValue?.length}</span>
+						<Badge showZero count={filesValue?.length} />
 					</NavLink>
-				</li>
-			</ul>
-			<p className="menu-label">Ingredients</p>
-			<ul className="menu-list">
-				<li>
+				</Menu.Item>
+			</Menu.ItemGroup>
+			<Menu.ItemGroup key="sub2" title="Ingredients">
+				<Menu.Item key="5">
 					<NavLink to="/fermentables" activeClassName="is-active">
 						Fermentables&nbsp;
-						<span className="tag">{fermentables.length}</span>
+						<Badge showZero overflowCount={999} count={fermentables?.length} />
 					</NavLink>
-				</li>
-				<li>
+				</Menu.Item>
+				<Menu.Item key="6">
 					<NavLink to="/yeasts" activeClassName="is-active">
 						Yeasts&nbsp;
-						<span className="tag">{yeasts.length}</span>
+						<Badge showZero overflowCount={999} count={yeasts?.length} />
 					</NavLink>
-				</li>
-				<li>
+				</Menu.Item>
+				<Menu.Item key="7">
 					<NavLink to="/hops" activeClassName="is-active">
 						Hops&nbsp;
-						<span className="tag">{hops.length}</span>
+						<Badge showZero overflowCount={999} count={hops.length} />
 					</NavLink>
-				</li>
-			</ul>
-		</aside>
+				</Menu.Item>
+			</Menu.ItemGroup>
+		</Menu>
 	);
 };

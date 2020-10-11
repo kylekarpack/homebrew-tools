@@ -10,12 +10,12 @@ export const RecipeList = () => {
 	const columns = useMemo(
 		() => [
 			{
-				Header: "Name",
-				accessor: "name",
+				title: "Name",
+				dataIndex: "name",
 			},
 			{
-				Header: "test",
-				accessor: "test",
+				title: "test",
+				dataIndex: "test",
 			},
 		],
 		[]
@@ -26,7 +26,6 @@ export const RecipeList = () => {
 			<Table
 				columns={columns}
 				data={filesValue.map((el) => el.recipe) || []}
-				className="is-hoverable"
 			/>
 		</div>
 	);
