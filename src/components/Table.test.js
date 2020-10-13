@@ -4,7 +4,7 @@ import Table from "./Table";
 
 describe("Table component", () => {
 	it("renders without crashing", () => {
-		const columns = [];
-		shallow(<Table columns={columns} data={[]} />);
+		const columns = [{ title: "Test", dataIndex: "test" }];
+		shallow(<Table columns={columns} data={[{ test: "test" }]} />);
 	});
 });
