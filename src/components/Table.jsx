@@ -7,7 +7,7 @@ export default function Table({ columns, data, pagination }) {
 		filteredInfo: {},
 	});
 
-	const handleChange = (pagination, filters, sorter) => {
+	const handleChange = (pageInfo, filters, sorter) => {
 		setState({
 			filteredInfo: filters,
 			sortedInfo: sorter,
