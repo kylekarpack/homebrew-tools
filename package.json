@@ -5,12 +5,12 @@
 	"license": "MIT",
 	"dependencies": {
 		"@ant-design/icons": "^4.8.0",
-		"antd": "^4.23.5",
+		"antd": "^4.24.13",
 		"react": "^16.14.0",
 		"react-dom": "^16.14.0",
 		"react-router-dom": "^5.3.4",
 		"react-scripts": "^5.0.1",
-		"recoil": "^0.7.6"
+		"recoil": "^0.7.7"
 	},
 	"devDependencies": {
 		"@types/jest": "^25.2.3",
