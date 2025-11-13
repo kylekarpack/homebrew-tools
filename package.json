@@ -4,7 +4,7 @@
 	"private": false,
 	"license": "MIT",
 	"dependencies": {
-		"@ant-design/icons": "^6.0.0",
+		"@ant-design/icons": "^6.1.0",
 		"antd": "^5.12.7",
 		"react": "^16.14.0",
 		"react-dom": "^16.14.0",
